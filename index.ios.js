@@ -13,6 +13,7 @@ import {
     View,
     Text,
     Image,
+    NavigatorIOS,
 } from 'react-native';
 
 import Home from './app/home/Home';
@@ -24,7 +25,7 @@ export default class ReactNativeDemo extends Component {
     constructor() {
         super();
         this.state = {
-            tab: 'home'
+            tab: 'home',
         };
     }
 
@@ -52,7 +53,12 @@ export default class ReactNativeDemo extends Component {
                     onPress={this.select.bind(this, 'find')}
                     selected={this.state.tab === 'find'}
                     title="发现">
-                    <ScrollView><Find/></ScrollView>
+                    <NavigatorIOS
+                        style={styles.container}
+                        initialRoute={{
+                            title: '控件的生命周期',
+                            component: Find
+                        }}/>
                 </TabBarIOS.Item>
                 <TabBarIOS.Item
                     icon={require('./images/me.png')}

@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 
 class List extends Component {
+
     constructor() {
         super();
         this.state = {}
@@ -41,5 +42,5 @@ const styles = StyleSheet.create({
         marginBottom:8,
         marginTop:16//两被的距离
     }
-})
+});
 export default List;

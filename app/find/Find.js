@@ -9,7 +9,7 @@ import {
     Text,
 } from 'react-native';
 
-import FindText from './FindText';
+import FindChildren from './FindChildren';
 
 /**
  * 生命周期
@@ -37,7 +37,6 @@ class Find extends Component {
         super(props);
         console.log("Find--constructor");
         this.state = {
-            title: '控件的生命周期',
             text: 'hello world'
         }
     }
@@ -59,7 +58,7 @@ class Find extends Component {
         return (
             <View style={styles.findView}>
                 <Text style={{fontSize: 20, marginBottom: 20}}>{this.state.title}</Text>
-                <FindText text={this.state.text}/>
+                <FindChildren text={this.state.text}/>
                 <Text
                     style={styles.textView}
                     onPress={()=> {

@@ -8,64 +8,64 @@ import {
     Text,
 } from 'react-native';
 
-class FindText extends Component {
+class FindChildren extends Component {
 
     //1,创建或刷新-默认和render都会执行
     static get defaultProps() {
-        console.log('FindText--defaultProps');
+        console.log('FindChildren--defaultProps');
         return ({
-            title: 'FindText'
+            title: 'FindChildren'
         })
     }
     //2,创建-执行构造
     constructor() {
         super();
-        console.log('FindText--constructor');
+        console.log('FindChildren--constructor');
         this.state = {
             value: 'hello'
         }
     }
     //3,创建-执行将要挂载
     componentWillMount() {
-        console.log('FindText--componentWillMount');
+        console.log('FindChildren--componentWillMount');
     }
     //4,创建或刷新-执行入口
     render() {
-        console.log('FindText--render');
+        console.log('FindChildren--render');
         //使用props 传递数据
         return (
-            <View style={styles.findTextView}>
+            <View style={styles.FindChildrenView}>
                 <Text>{this.props.text}</Text>
             </View>
         )
     }
     //5,创建-执行已经挂载
     componentDidMount() {
-        console.log('FindText--componentDidMount');
+        console.log('FindChildren--componentDidMount');
     }
     //6,刷新-控件属性变化执行
     componentWillReceiveProps() {
-        console.log('FindText--componentWillReceiveProps');
+        console.log('FindChildren--componentWillReceiveProps');
     }
     //7,创建和判断是否能够更新
     shouldComponentUpdate() {
-        console.log('FindText--shouldComponentUpdate');
+        console.log('FindChildren--shouldComponentUpdate');
         return true;
     }
     //8,创建或刷新-将要更新
     componentWillUpdate() {
-        console.log('FindText--constructor');
+        console.log('FindChildren--constructor');
     }
     //9,创建或刷新-已经更新
     componentDidUpdate() {
-        console.log('FindText--componentDidUpdate');
+        console.log('FindChildren--componentDidUpdate');
     }
 }
 const styles = StyleSheet.create({
-    findTextView: {
+    FindChildrenView: {
         width: 100,
         height: 50,
         backgroundColor: 'green'
     }
 })
-export default FindText;
+export default FindChildren;

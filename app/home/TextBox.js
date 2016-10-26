@@ -7,8 +7,8 @@ import {
 
 class TextBox extends Component {
 
-    clickChildren() {
-        alert("点击了");
+    clickChildren(position) {
+        alert("点击了:" + position);
     }
 
     render() {
@@ -16,7 +16,13 @@ class TextBox extends Component {
             <View >{
                 React.Children.map(this.props.children, (text, position)=> {
                     return (
-                        <Text style={styles.homeBox} onPress={()=>this.clickChildren()}>{position},{text}</Text>
+                        <Text
+                            style={styles.homeBox}
+                            onPress={
+                                ()=>this.clickChildren(position)
+                            }>
+                            {position},{text}
+                        </Text>
                     )
                 })
             }</View>

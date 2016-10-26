@@ -1,0 +1,31 @@
+三）属性方法
+
+名称	类型	属性还是方法	作用	平台
+allowFontScaling	bool	属性	控制字体文本是否根据iOS的设置进行自动缩放	iOS平台，Android平台不适用
+numberOfLines	number	属性	设置Text显示文本的行数，如果显示的内容超过了行数，默认其他多余的信息就不会显示了。	全平台
+onLayout	function	方法	当布局发生变动时自动触发该方法，其中function的参数如下：{nativeEvent: {layout: {x, y, width, height}}}	全平台
+onLongPress	function	方法	当Text视图被长按的时候，该方法被调用	全平台
+onPress	function	方法	该方法当文本被点击的时候调用这个方法	全平台
+在这里我只是举出一些比较常用的属性方法，只是起到抛砖引玉的作用，如果要了解更多的知识可以查看官方网址。
+
+（四）风格样式——Style标签
+
+Text组件可以使用View组件所有的Style，View组件的所有Style可以查看官方文档View的Style汇总
+
+名称	作用	Value
+color	字体颜色	值的形式有多种，color
+fontFamily	字体名称	自行查看相关字体
+fontSize	字体大小	值为 数字
+fontStyle	字体风格	enum(‘normal’,’italic’)
+fontWeight	字体粗细权重	enum(‘normal’,’bold’,’100’,’200’,’300’,’400’,’500’,’600’,’700’,’800’,’900’),指定字体粗细，normal和bold适用于大多数字体，不是所有的字体的值都能用数字值，在这种情况下，最接近的值被选择。
+lineHeight	行高	数字（number）
+textAlign	文本对齐方法	enum(‘auto’,’left’,’right’,’center’,’justify’) 指定文本对齐方式，‘justify’值只支持iOS,在Android上会自动回退到left。
+textDecorationLine	横线位置	enum(‘none’, ‘underline’, ‘line-through’, ‘underline line-through’)
+textShadowColor	阴影效果颜色	值的形式有多种，color
+textShadowOffset	设置阴影效果	{width:number,height:number}
+textShadowRadius	阴影效果圆角	数字(number)
+textAlignVertical	文本垂直对齐方式	enum(‘auto’,’top’,’bottom’,’center’) 不支持iOS，只支持Android
+letterSpacing	字符间距	数字(number)只支持iOS，不支持Android
+textDecorationColor	值的形式有多种，color只支持iOS，不支持Android
+textDecorationStyle	横线的风格	enum(‘solid’,’double’,’dotted’,’dashed’)只支持iOS，不支持Android
+writingDirection	文本方向	enum(‘auto’,’ltr’,’rtl’)只支持iOS，不支持Android

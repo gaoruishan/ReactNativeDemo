@@ -10,10 +10,8 @@ import {
     StyleSheet,
     TabBarIOS,
     ScrollView,
-    View,
-    Text,
-    Image,
     NavigatorIOS,
+    Navigator,
 } from 'react-native';
 
 import Home from './app/home/Home';
@@ -65,6 +63,22 @@ export default class ReactNativeDemo extends Component {
                     onPress={this.select.bind(this, 'me')}
                     selected={this.state.tab === 'me'}
                     title="我的">
+                    {/*<Navigator*/}
+                        {/*style={styles.container}*/}
+                        {/*configureScene={(route) => {*/}
+                            {/*return Navigator.SceneConfigs.HorizontalSwipeJumpFromRight;*/}
+                        {/*}}*/}
+                        {/*initialRoute={{*/}
+                            {/*title: '控件的生命周期',*/}
+                            {/*component: Me*/}
+                        {/*}}*/}
+                        {/*renderScene={(route, navigator) => {*/}
+                            {/*let Component = route.component;*/}
+                            {/*//这个语法是把 routes.params 里的每个key作为props的一个属性，在下个页面即可用this. props.id调用*/}
+                            {/*//navigator对象在导航容器跳转时一直存在*/}
+                            {/*return <Component {...route.params} navigator={navigator} />*/}
+                        {/*}}*/}
+                    {/*/>*/}
                     <ScrollView><Me/></ScrollView>
                 </TabBarIOS.Item>
             </TabBarIOS>

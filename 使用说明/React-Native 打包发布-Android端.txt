@@ -1,0 +1,42 @@
+1.生成一个签名密钥
+keytool -genkey -v -keystore my-release-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000
+最后它会生成一个叫做my-release-key.keystore的密钥库文件
+
+2.找到路径/android/app/src/main，并在该目录下新建assets文件夹
+
+3.在工程目录下将index.android.bundle下载并保存到assets资源文件夹中
+curl -k "http://localhost:8081/index.android.bundle" > android/app/src/main/assets/index.android.bundle
+这句命令是重点，如果assets目录中不存在该文件，则打包的apk在执行时显示空白。
+Protocol 'http not supported or disabled in libcurl
+Windows下安装使用curl命令:http://jingyan.baidu.com/article/a681b0dec4c67a3b1943467c.html
+
+4.添加gradle的android keystore配置
+打包的apk在未签名的情况下,在手机中（非root）是不允许安装的
+在build.gradle文件中
+  //签名
+signingConfigs{
+    release {
+        storeFile file("/my-release-key.keystore")
+        storePassword "密码"
+        keyAlias "keyAlias的名字"
+        keyPassword "密码"
+    }
+}
+buildTypes {
+    release {
+        minifyEnabled false
+        proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        signingConfig signingConfigs.release //添加这句话引用签名配置
+    }
+}`
+
+5.启用Proguard代码混淆来缩小APK文件的大小
+Proguard是一个Java字节码混淆压缩工具，它可以移除掉React Native Java（和它的依赖库中）中没有被使用到的部分，最终有效的减少APK的大小。
+重要：启用Proguard之后，你必须再次全面地测试你的应用。Proguard有时候需要为你引入的每个原生库做一些额外的配置。参见app/proguard-rules.pro文件。
+def enableProguardInReleaseBuilds = true
+
+6.在/android/目录中执行gradle assembleRelease命令，打包后的文件在 android/app/build/outputs/apk目录中，例如app-release.apk。如果打包碰到问题可以先执行 gradle clean 清理一下。
+安装gradle工具（版本与android\gradle\wrapper下的一致），并配置环境变量，配置GRADLE_HOME到你的gradle根目录当中，然后把%GRADLE_HOME%/bin（linux或mac的是$GRADLE_HOME/bin）加到PATH的环境变量。
+配置完成之后，运行gradle -v，检查一下是否安装无误
+
+7.将apk发布到各大应用市场（BUILD SUCCESSFUL）

@@ -1,0 +1,42 @@
+1.1 安装Xcode
+打开App Store
+
+1.2  安装Node.js
+Node.js官网：https://nodejs.org
+Node.js和npm都是安装在/usr/local/bin/路径
+
+1.3 利用Homebrew安装watchman和flow
+1. brew安装：
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+2. wget安装：
+brew install wget
+测试:brew -v
+3,brew install watchman
+4,brew install flow
+测试: nam -v
+5,sudo nam install -g react-native-cli
+
+1.4 NVM安装
+git clone https://github.com/creationix/nvm
+ cd nvm/
+ls
+source nvm.sh 
+nvm
+nvm ls -remote
+nvm ls
+
+1.5  创建项目
+react-native init HelloWorld
+
+1.6 运行项目
+  iOS运行
+ 进入HelloWorld /IOS  点击HelloWorld.xcodeproj 运行Xcode
+Command ＋ R运行
+Command ＋ D调试
+注意：不要关闭终端和模拟器，用Sublime打开index.ios.js，编辑
+  android运行
+ 命令cd进入HelloWorld
+android avd 打开模拟器管理  并start
+react-native run-android 编译并安装到模拟器上
+双击R键- 运行
+摇一摇或按菜单键- 调试

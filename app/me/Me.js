@@ -12,7 +12,6 @@ import {
     StyleSheet,
     View,
     Text,
-    Image,
     TextInput,
     ListView,
 } from 'react-native';
@@ -87,14 +86,13 @@ class Me extends Component {
 
     //自定义item
     renderRow(rawData) {
-        return (<MeItem rawData={rawData}/>)
+        return (<MeItem rawData={rawData}/>);
     }
 }
 const styles = StyleSheet.create({
     meView: {
         flex: 1,
         margin: 10,
-        justifyContent: 'center'
     },
     meTextInput: {
         marginTop: 20,

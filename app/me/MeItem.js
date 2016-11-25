@@ -7,24 +7,37 @@ import {
     View,
     Image,
     Text,
+    TouchableWithoutFeedback,
 } from 'react-native';
+
+import DetailView from './DetailView';
 
 class MeItem extends Component {
 
+    selectedCell(rawData) {
+        console.log("rawData=" + rawData.full_name);
+        this.props.navigator.push({
+            title:'详情',
+            component:DetailView
+        });
+    }
+
     render() {
-        var rawData = this.props.rawData;
+        var raw = this.props.rawData;
         return (
             <View style={styles.meItem}>
-                <View style={styles.meItemContent}>
-                    <Image style={styles.meImage} source={{uri: rawData.owner.avatar_url}}/>
-                    <View style={styles.meItemText}>
-                        <Text style={styles.meTitle}>{rawData.full_name}</Text>
-                        <Text style={styles.meText}>rawData.description}</Text>
+                <TouchableWithoutFeedback onPress={()=>this.selectedCell(raw)}>
+                    <View style={styles.meItemContent}>
+                        <Image style={styles.meImage} source={{uri: raw.owner.avatar_url}}/>
+                        <View style={styles.meItemText}>
+                            <Text style={styles.meTitle}>{raw.full_name}</Text>
+                            <Text style={styles.meText}>{raw.description}</Text>
+                        </View>
                     </View>
-                </View>
+                </TouchableWithoutFeedback>
                 <View style={styles.meLine}/>
             </View>
-        )
+        );
     }
 }
 
@@ -44,11 +57,13 @@ const styles = StyleSheet.create({
         marginLeft: 8
     },
     meImage: {
-        height: 40,
-        width: 40,
+        height: 45,
+        width: 45,
     },
     meTitle: {
         fontSize: 16,
+        textAlignVertical: 'center',
+
     },
     meText: {
         fontSize: 13

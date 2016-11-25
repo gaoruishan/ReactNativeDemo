@@ -13,7 +13,7 @@ class TextBox extends Component {
 
     render() {
         return (
-            <View >{
+            <View>{
                 React.Children.map(this.props.children, (text, position)=> {
                     return (
                         <Text
